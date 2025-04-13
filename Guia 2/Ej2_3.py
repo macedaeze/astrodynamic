@@ -27,12 +27,12 @@ def arccot(x):
     """
     return math.atan(1 / x)
 
-def getMeanMotion(semilactusRectus):
+def getMeanMotion(semilactusRectum):
     """
     Funcion que calcula el movimiento medio a partir del semieje latus recto.
 
     Parametros:
-    semilactusRectus (float): Semieje latus recto [en metros]
+    semilactusRectum (float): Semieje latus recto [en metros]
 
     Retorna:
     float: Movimiento medio [en radianes por segundo]
@@ -44,30 +44,30 @@ def getMeanMotion(semilactusRectus):
     Mu = G * M  # Constante gravitacional de la Tierra
 
     # Calculamos el movimiento medio
-    meanMotion = 2 * (Mu / semilactusRectus ** 3) ** 0.5
+    meanMotion = 2 * (Mu / semilactusRectum ** 3) ** 0.5
 
     return meanMotion
 
-def getParabolicAnomaly(deltaT, semilactusRectus):
+def getParabolicAnomaly(deltaT, semilactusRectum):
     """
     Funcion que calcula la anomalia parabolica a partir del tiempo transcurrido y el semieje latus recto.
 
     Parametros:
     deltaT (float): Tiempo transcurrido [en segundos]
-    semilactusRectus (float): Semieje latus recto [en metros]
+    semilactusRectum (float): Semieje latus recto [en metros]
 
     Retorna:
     float: Anomalia parabolica [en radianes]
     """
-    meanMotion = getMeanMotion(semilactusRectus)
+    meanMotion = getMeanMotion(semilactusRectum)
 
-    s = arccot(3/2 *meanMotion * deltaT) / 2
+    s = arccot(3/2 * meanMotion * deltaT) / 2
 
     tanS = math.tan(s)
     w = math.atan(tanS ** (1/3))
  
     # Calculamos la anomalia parabolica
-    B = 2*cot(2*w)
+    B = 2 * cot(2 * w)
 
     return B
 
@@ -79,7 +79,7 @@ class TestgetParabolicAnomaly(unittest.TestCase):
         """
         Matriz de casos sencillos para verificar la función getParabolicAnomaly.
         """
-        test_cases = [
+        test_cases = [#deltaT, semilactusRectum, expected
             (3227.244, 25512000, 0.81774), #Ejemplo del Vallado p69/70
             (1800,    20000000,  0.69274),
             (600,    15000000, 0.39226),

@@ -36,11 +36,11 @@ class TestGetEccentricAnomaly(unittest.TestCase):
         Matriz de casos sencillos para verificar la función getEccentricAnomaly.
         """
         test_cases = [
-            # ( e,    nu,         expected_E )
-            (0.0,   0.0,       0.0),         # trivial - E=M=0
-            (0.5,   1.0472,    0.6435),      # e=0.5 => E=π/6
-            (1.0,   1.0472,    0.5773),      # e=1 => E=π/3
-            (1.5,   1.0472,    1.3100),      # e>1 => E=π/3
+            # ( e,  trueAnom,  expected )
+            (0.0,   0.0,       0.0),         
+            (0.5,   1.0472,    0.6435),     
+            (1.0,   1.0472,    0.5773), 
+            (1.5,   1.0472,    1.3100),  
         ]
 
         for eccentricity, trueAnomaly, expected in test_cases:
