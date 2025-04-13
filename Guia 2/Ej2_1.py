@@ -1,3 +1,5 @@
+# En este archivo se encuentra la funcion getEccentricAnomaly que calcula la anomalia excentrica a partir de la excentricidad y la anomalia media.
+
 import numpy as np
 import unittest
 from math import pi

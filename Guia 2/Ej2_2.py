@@ -1,3 +1,5 @@
+# En este archivo se encuentra la funcion getMeanAnomaly que calcula la anomalia media a partir de la excentricidad y la anomalia excentrica.
+
 import matplotlib.pyplot as plt
 import numpy as np
 
