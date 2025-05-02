@@ -1,5 +1,5 @@
 import math
-from Ej2_1 import getEccentricAnomaly
+from Ej2_5 import getEccentricAnomaly
 from Ej2_2 import getMeanAnomaly
 import unittest
 import numpy as np
@@ -17,12 +17,10 @@ def getMeanAnomalyFromTrue(eccentricity, trueAnomaly):
     float: Anomalia media [en radianes]
     """
 
-    if eccentricity < 1.0 and eccentricity > 0.0:
-        # Para el caso eliptico
+    if eccentricity < 1.0 and eccentricity >= 0.0:
+        # Para el caso eliptico y circular
         eccentricAnomaly = getEccentricAnomaly(eccentricity, trueAnomaly)
-        print("Eccentric Anomaly: ", eccentricAnomaly)
         meanAnomaly = getMeanAnomaly(eccentricity, eccentricAnomaly)
-        print("Mean Anomaly: ", meanAnomaly)
 
     else:
         raise ValueError("La excentricidad debe ser mayor o igual a 0 y menor o igual a 1.")
@@ -41,8 +39,8 @@ class TestGetMeanAnomalyFromTrue(unittest.TestCase):
         test_cases = [
             # ( e,  trueAnomaly,    expected )
             (0.1,   0.0,            0.0),  
-            (0.5,   1.0472,         1.0472), 
-            (0.9,   1.0472,         1.0472),  
+            (0.5,   1.0472,         0.3435), 
+            (0.9,   1.0472,         0.0291),  
         ]
 
         for eccentricity, trueAnomaly, expected in test_cases:

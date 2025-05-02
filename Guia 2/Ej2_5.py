@@ -1,5 +1,6 @@
 import math
 import unittest
+import numpy as np
 
 def getEccentricAnomaly(eccentricity, trueAnomaly):
     """
@@ -15,16 +16,18 @@ def getEccentricAnomaly(eccentricity, trueAnomaly):
     
     if eccentricity < 1.0:
         # Para el caso eliptico
-        eccentricAnomaly = math.asin(math.sin(trueAnomaly) * math.sqrt(1 - eccentricity**2) / (1 + eccentricity * math.cos(trueAnomaly) ) )
+        
+        SenEccentricAnomaly =  np.sin(trueAnomaly) * np.sqrt(1 - eccentricity**2) / (1 + eccentricity * np.cos(trueAnomaly) )
+        CosEccentricAnomaly = (eccentricity + np.cos(trueAnomaly)) / (1 + eccentricity * np.cos(trueAnomaly) )
+        eccentricAnomaly = np.arctan2(SenEccentricAnomaly, CosEccentricAnomaly)
     elif eccentricity == 1.0:
         # Para el caso parabolico
-        eccentricAnomaly = math.tan(trueAnomaly / 2)
+        eccentricAnomaly = np.tan(trueAnomaly / 2)
     elif eccentricity > 1.0:
         # Para el caso hiperbólico
-        eccentricAnomaly = math.asinh(math.sin(trueAnomaly) * math.sqrt(eccentricity**2 - 1) / 1 + eccentricity * math.cos(trueAnomaly) )
+        eccentricAnomaly = np.asinh(math.sin(trueAnomaly) * math.sqrt(eccentricity**2 - 1) / 1 + eccentricity * math.cos(trueAnomaly) )
     else:
         raise ValueError("La excentricidad debe ser mayor o igual a 0.")
-    
     return eccentricAnomaly
 
 
