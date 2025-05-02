@@ -23,7 +23,7 @@ def getTrueAnomaly(eccentricity, eccentricAnomaly, semilactusRectum = None, rDis
         # Para el caso hiperbólico
         trueAnomaly = math.acos( (math.cosh(eccentricAnomaly) - eccentricity) / ( 1 - eccentricity * math.cosh(eccentricAnomaly) ) )
     else:
-        raise ValueError("La excentricidad debe ser mayor o igual a 0 y menor o igual a 1.")
+        raise ValueError("La excentricidad debe ser mayor o igual a 0.")
     
     return trueAnomaly
 

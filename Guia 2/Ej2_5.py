@@ -23,7 +23,7 @@ def getEccentricAnomaly(eccentricity, trueAnomaly):
         # Para el caso hiperbólico
         eccentricAnomaly = math.asinh(math.sin(trueAnomaly) * math.sqrt(eccentricity**2 - 1) / 1 + eccentricity * math.cos(trueAnomaly) )
     else:
-        raise ValueError("La excentricidad debe ser mayor o igual a 0 y menor o igual a 1.")
+        raise ValueError("La excentricidad debe ser mayor o igual a 0.")
     
     return eccentricAnomaly
 
