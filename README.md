@@ -51,3 +51,6 @@ Ezequiel Maceda
 📍 Buenos Aires, Argentina
 🛰️ System Engineer.
 
+Johanna Olivera
+📍 Buenos Aires, Argentina
+🛰️ System Engineer.
