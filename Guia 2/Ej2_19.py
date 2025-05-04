@@ -166,6 +166,8 @@ def kepler2state(elements, time):
     
     # Velocidad en el plano orbital transformada al sistema de referencia inercial
     velocity = transformMatrix @ np.array([vxOrbit, vyOrbit, 0])
+
+    print(f"Posición: {position}, Velocidad: {velocity}")
     
     return position, velocity
 
@@ -260,6 +262,14 @@ def runSimulation(position0, velocity0, timeSpan, numPoints=100):
     """
     # Calcular elementos orbitales iniciales
     orbitalElements = calculateOrbitalElements(position0, velocity0)
+    print("Elementos orbitales iniciales:")
+    print(f"Semieje mayor (a): {orbitalElements['a']} km")
+    print(f"Excentricidad (e): {orbitalElements['e']}")
+    print(f"Inclinación (i): {np.degrees(orbitalElements['i'])} grados")
+    print(f"RAAN: {np.degrees(orbitalElements['raan'])} grados")
+    print(f"Argumento del periapsis: {np.degrees(orbitalElements['argPeri'])} grados")
+    print(f"Anomalía verdadera: {np.degrees(orbitalElements['trueAnomaly'])} grados")
+
     
     # Verificar que la órbita es elíptica
     if orbitalElements['e'] >= 1.0:
@@ -353,8 +363,8 @@ class TestOrbitalMechanics(unittest.TestCase):
 
 if __name__ == '__main__':
     
-    position0 = np.array([7000.0, 0.0, 0.0])   # km
-    velocity0 = np.array([0.0, 7.5, 2.0])      # km/s
+    position0 = np.array([-6000.0, 6000.0, 6000.0])   # km
+    velocity0 = np.array([-3.0, -4.0, 3.0])      # km/s
     timeSpan = (0, 15000)                  # segundos
 
     runSimulation(position0, velocity0, timeSpan)
