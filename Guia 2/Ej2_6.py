@@ -1,5 +1,6 @@
 import math
 import unittest
+import numpy as np
 
 def getTrueAnomaly(eccentricity, eccentricAnomaly, semilactusRectum = None, rDistance = None):
     """
@@ -15,7 +16,7 @@ def getTrueAnomaly(eccentricity, eccentricAnomaly, semilactusRectum = None, rDis
     
     # Para el caso eliptico
     if eccentricity < 1.0:
-        trueAnomaly = math.asin(math.sin(eccentricAnomaly) * math.sqrt(1 - eccentricity**2) / (1 + eccentricity * math.cos(eccentricAnomaly) ) )
+        trueAnomaly = 2 * np.arctan2(np.sqrt(1+eccentricity) * np.sin(eccentricAnomaly/2), np.sqrt(1-eccentricity) * np.cos(eccentricAnomaly/2))
     elif eccentricity == 1.0:
         # Para el caso parabolico
         trueAnomaly = math.asin(semilactusRectum*eccentricAnomaly / rDistance)
