@@ -115,13 +115,13 @@ def graficar_elementos(resultados):
     plt.tight_layout()
     plt.show()
 
-# Prueba para el TLE más reciente del SAOCOM 1B de CelesTrak
+# Ejecutar con satélite Molniya
 if __name__ == "__main__":
-    LINEA_1 = "1 46265U 20059A   25125.80864947  .00000729  00000+0  98109-4 0  9998"
-    LINEA_2 = "2 46265  97.8894 312.5046 0001574  88.3358 271.8036 14.82149559253154"
+    LINEA_1 = "1 28638U 05010A   25125.49752899  .00000087  00000+0  34569-4 0  9992"
+    LINEA_2 = "2 28638  62.6467  74.7439 7224485 270.2220  10.6274  2.00619534138045"
 
-    # Propagar 5 órbitas (~97.14 min x 5)
-    duracion_segundos = int(97.14 * 60 * 5)
+    # Propagar 2 órbitas (≈ 12 h por órbita)
+    duracion_segundos = int(12 * 3600 * 2)
     paso_segundos = 60
 
     sat = Satrec.twoline2rv(LINEA_1, LINEA_2)
